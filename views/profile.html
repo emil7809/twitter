@@ -1,0 +1,12 @@
+% include("header")
+<main>
+    <h1>{{the_user["user_username"]}}</h1>
+    <img src="../avatars/{{the_user['user_avatar']}}" alt="avatar">
+
+
+    % include("tweets")
+    % include("you_might_like")
+    % include("trends")
+
+</main>
+% include("footer")

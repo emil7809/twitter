@@ -1,0 +1,11 @@
+<div>
+    <h2>Trends for you</h2>
+
+    % for trend in trends:
+    <div>
+        <p>Trending in Denmark</p>
+        <p>{{trend["title"]}}</p>
+        <p>{{trend["total_tweets"]}}</p>
+    </div>
+    % end
+</div>
