@@ -50,7 +50,7 @@ nav .icon,
   width: 1.75rem;
 }
 
-#nav_700 {
+.hidden_on_phone {
   display: none;
 }
 
@@ -73,15 +73,16 @@ nav .icon,
   margin-left: auto;
   margin-right: auto;
 }
-
 #home_nav {
-  display: flex;
-  justify-content: space-around;
   border-bottom: 1px rgb(66, 69, 72) solid;
   position: sticky;
   top: 0;
   backdrop-filter: blur(20px);
   background-color: rgba(0, 0, 0, 0.5);
+}
+#home_nav .inner {
+  display: flex;
+  justify-content: space-around;
 }
 
 #home_nav .active {
@@ -168,6 +169,9 @@ nav .icon,
 }
 
 @media (min-width: 700px) {
+  .hidden_on_phone {
+    display: block;
+  }
   nav {
     display: none;
   }
@@ -178,7 +182,6 @@ nav .icon,
   }
 
   #nav_700 {
-    display: block;
     width: 3rem;
     border-right: 1px rgb(66, 69, 72) solid;
     z-index: 999;
@@ -188,14 +191,25 @@ nav .icon,
     display: grid;
     position: fixed;
   }
+
+  #nav_700 .nav_700_inner .icon {
+    padding-top: 2rem;
+  }
+  #nav_700 .nav_700_inner .logo {
+    width: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 0.3rem;
+  }
   #home_top {
     display: none;
   }
 
-  /*  #home_nav {
-  } */
+  #home_nav h1 {
+    padding-left: 1rem;
+  }
 
   #home_nav_and_tweets {
     width: 600px;
+    border-right: 1px rgb(66, 69, 72) solid;
   }
 }
