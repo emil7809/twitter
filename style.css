@@ -1,5 +1,15 @@
 body {
   background: black;
+  margin: 0;
+  width: 100%;
+}
+
+img {
+  width: 100%;
+}
+
+.flex {
+  display: flex;
 }
 
 h1,
@@ -9,8 +19,156 @@ p,
 a,
 span {
   color: white;
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+a {
+  font-weight: 600;
+  font-size: 1.1rem;
 }
 
 .smol_img {
   width: 100px;
+}
+
+nav {
+  position: fixed;
+  bottom: 0;
+  height: 3.5rem;
+  max-height: 16vh;
+  width: 100%;
+  background: black;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-top: 1px rgb(66, 69, 72) solid;
+}
+
+nav .icon {
+  fill: rgb(231, 233, 234);
+  width: 1.75rem;
+}
+
+#home_top {
+  display: flex;
+  align-items: center;
+  height: 4rem;
+  padding-left: 1rem;
+}
+
+#home_top img {
+  width: 40px;
+  border-radius: 100px;
+  position: absolute;
+}
+
+.logo {
+  width: 28px;
+  fill: rgb(29, 155, 240);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#home_nav {
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 1px rgb(66, 69, 72) solid;
+  position: sticky;
+  top: 0;
+  backdrop-filter: blur(20px);
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+#home_nav .active {
+  font-weight: 600;
+  color: white;
+  padding-bottom: 1rem;
+  border-bottom: 5px rgb(29, 155, 240) solid;
+}
+
+#home_nav .deactive {
+  font-weight: 400;
+  color: rgb(113, 118, 123);
+}
+#show_tweets {
+  border-bottom: 1px rgb(66, 69, 72) solid;
+}
+#show_tweets p {
+  text-align: center;
+  color: rgb(29, 155, 240);
+}
+
+.tweet {
+  display: flex;
+  padding: 0.8rem;
+  border-bottom: 1px rgb(66, 69, 72) solid;
+}
+
+#tweets .right .top,
+#tweets .right .top .info {
+  display: flex;
+  align-items: center;
+}
+
+#tweets .right .top .info p {
+  color: rgb(113, 118, 123);
+  padding: 0 2px 0 2px;
+}
+
+#tweets .right .message {
+  margin-top: 0;
+}
+
+#tweets .right img {
+  border-radius: 8px;
+}
+
+.dots {
+  fill: rgb(113, 118, 123);
+  width: 20px;
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.avatar {
+  width: 3rem;
+  border-radius: 50px;
+  padding-right: 0.8rem;
+}
+
+.check {
+  width: 20px;
+  fill: rgb(29, 155, 240);
+}
+
+#tweets .right .bottom {
+  display: flex;
+  justify-content: space-between;
+}
+
+#tweets .right .bottom p {
+  color: rgb(113, 118, 123);
+}
+#tweets .right .bottom .icon {
+  width: 20px;
+  fill: rgb(113, 118, 123);
+  padding: 0 5px 0 5px;
+}
+
+#tweets .right .bottom .download {
+  display: flex;
+  align-items: center;
+  /* margin-left: auto; */
+}
+
+@media (min-width: 600px) {
+  nav {
+    /*  position: fixed; */
+    top: 0;
+    display: grid;
+    width: 3rem;
+    border-right: 1px rgb(66, 69, 72) solid;
+    height: 100%;
+  }
 }

@@ -1,3 +1,5 @@
+# https://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@github.com/emil7809/twitter.git
+
 from bottle import default_app, get, run, template, static_file, post
 import sqlite3
 import pathlib
@@ -20,7 +22,7 @@ trends = [
 
 @post('/secret_url_for_git_hook')
 def git_update():
-  repo = git.Repo('./mysite')
+  repo = git.Repo('./twitter')
   origin = repo.remotes.origin
   repo.create_head('main', origin.refs.main).set_tracking_branch(origin.refs.main).checkout()
   origin.pull()
