@@ -44,9 +44,14 @@ nav {
   border-top: 1px rgb(66, 69, 72) solid;
 }
 
-nav .icon {
+nav .icon,
+#nav_700 .icon {
   fill: rgb(231, 233, 234);
   width: 1.75rem;
+}
+
+#nav_700 {
+  display: none;
 }
 
 #home_top {
@@ -162,13 +167,35 @@ nav .icon {
   /* margin-left: auto; */
 }
 
-@media (min-width: 600px) {
+@media (min-width: 700px) {
   nav {
-    /*  position: fixed; */
-    top: 0;
+    display: none;
+  }
+  main {
     display: grid;
+    grid-template-columns: 3rem 600px;
+    justify-content: center;
+  }
+
+  #nav_700 {
+    display: block;
     width: 3rem;
     border-right: 1px rgb(66, 69, 72) solid;
-    height: 100%;
+    z-index: 999;
+  }
+
+  #nav_700 .nav_700_inner {
+    display: grid;
+    position: fixed;
+  }
+  #home_top {
+    display: none;
+  }
+
+  /*  #home_nav {
+  } */
+
+  #home_nav_and_tweets {
+    width: 600px;
   }
 }
