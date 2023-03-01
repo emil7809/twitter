@@ -17,6 +17,7 @@ h2,
 h3,
 p,
 a,
+b,
 span {
   color: white;
   font-family: "Source Sans Pro", sans-serif;
@@ -82,26 +83,30 @@ nav .icon,
   margin-left: auto;
   margin-right: auto;
 }
-#home_nav {
+#home_nav,
+#user_nav {
   border-bottom: 1px rgb(66, 69, 72) solid;
   position: sticky;
   top: 0;
   backdrop-filter: blur(20px);
   background-color: rgba(0, 0, 0, 0.5);
 }
-#home_nav .inner {
+#home_nav .inner,
+#user_nav .inner {
   display: flex;
   justify-content: space-around;
 }
 
-#home_nav .active {
+#home_nav .active,
+#user_nav .active {
   font-weight: 600;
   color: white;
   padding-bottom: 1rem;
   border-bottom: 5px rgb(29, 155, 240) solid;
 }
 
-#home_nav .deactive {
+#home_nav .deactive,
+#user_nav .deactive {
   font-weight: 400;
   color: rgb(113, 118, 123);
 }
@@ -179,6 +184,103 @@ nav .icon,
   margin-left: auto;
 }
 
+#user_top {
+  width: 100%;
+  padding: 0.8rem;
+  position: fixed;
+  backdrop-filter: blur(20px);
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 11;
+}
+#user_top .icon {
+  width: 1.3rem;
+  fill: white;
+}
+
+#user_top .user_info {
+  margin-left: 3rem;
+}
+#user_top .user_info .small_txt,
+#user_more_info .user_info .small_txt {
+  color: rgb(113, 118, 123);
+}
+
+#user_top .user_info p,
+#user_top .user_info h3,
+#user_more_info .user_info p,
+#user_more_info .user_info h3 {
+  margin: 0;
+}
+
+#user_profile .user_cover {
+  padding-top: 4.2rem;
+}
+
+#user_profile .user_top_info {
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: -2.8rem;
+}
+#user_profile .profile_picture {
+  width: 5.5rem;
+  border: 3px black solid;
+  border-radius: 100px;
+}
+
+#user_profile .user_top_info .icon {
+  fill: white;
+  width: 1.2rem;
+  border: 1px rgb(128, 128, 128) solid;
+  border-radius: 100px;
+  padding: 5px;
+  margin: 0 5px 0 5px;
+}
+
+#user_profile .user_top_info button {
+  all: unset;
+  color: white;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 1.1rem;
+  border: 1px rgb(128, 128, 128) solid;
+  border-radius: 100px;
+  padding: 10px;
+  margin-left: 5px;
+  z-index: 10;
+  /* position: sticky;
+  top: 0; */
+}
+
+#user_more_info .user_info {
+  margin-left: 1rem;
+}
+
+#user_profile .user_info .icon {
+  fill: rgb(128, 128, 128);
+  width: 1.2rem;
+}
+
+#user_profile .user_info .joined {
+  display: flex;
+  padding: 0.8rem 0 0.8rem 0;
+}
+
+#user_profile .user_info .user_followeres {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+#user_profile .user_info .user_followeres b {
+  padding-right: 5px;
+}
+
+#user_profile .user_top_info .info_next_to_profile_picture {
+  display: flex;
+  align-items: center;
+}
+
 @media (min-width: 700px) {
   .hidden_on_phone {
     display: block;
@@ -199,7 +301,7 @@ nav .icon,
     width: 4rem;
     border-right: 1px rgb(66, 69, 72) solid;
     height: 100%;
-    z-index: 999;
+    z-index: 10;
     display: flex;
     flex-direction: column;
   }
