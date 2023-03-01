@@ -54,6 +54,10 @@ nav .icon,
   display: none;
 }
 
+.hidden_on_tablet {
+  display: block;
+}
+
 #home_top {
   display: flex;
   align-items: center;
@@ -61,7 +65,8 @@ nav .icon,
   padding-left: 1rem;
 }
 
-#home_top img {
+#home_top img,
+.nav_700_inner img {
   width: 40px;
   border-radius: 100px;
   position: absolute;
@@ -150,7 +155,7 @@ nav .icon,
 
 #tweets .right .bottom {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 }
 
 #tweets .right .bottom p {
@@ -161,30 +166,38 @@ nav .icon,
   fill: rgb(113, 118, 123);
   padding: 0 5px 0 5px;
 }
-
-#tweets .right .bottom .download {
+#tweets .right .bottom div {
+  padding: 0 5px 0 5px;
+}
+#tweets .right .bottom div:last-of-type {
   display: flex;
   align-items: center;
-  /* margin-left: auto; */
+  margin-left: auto;
 }
 
 @media (min-width: 700px) {
   .hidden_on_phone {
     display: block;
   }
+  .hidden_on_tablet {
+    display: none !important;
+  }
   nav {
     display: none;
   }
   main {
     display: grid;
-    grid-template-columns: 3rem 600px;
+    grid-template-columns: 4rem 600px;
     justify-content: center;
   }
 
   #nav_700 {
-    width: 3rem;
+    width: 4rem;
     border-right: 1px rgb(66, 69, 72) solid;
+    height: 100%;
     z-index: 999;
+    display: flex;
+    flex-direction: column;
   }
 
   #nav_700 .nav_700_inner {
@@ -193,12 +206,18 @@ nav .icon,
   }
 
   #nav_700 .nav_700_inner .icon {
-    padding-top: 2rem;
+    padding-top: 1.5rem;
   }
+
   #nav_700 .nav_700_inner .logo {
     width: 2rem;
     padding-top: 1rem;
     padding-bottom: 0.3rem;
+  }
+
+  .nav_700_inner img {
+    position: fixed;
+    bottom: 2rem;
   }
   #home_top {
     display: none;
@@ -211,5 +230,48 @@ nav .icon,
   #home_nav_and_tweets {
     width: 600px;
     border-right: 1px rgb(66, 69, 72) solid;
+  }
+
+  .tweet input {
+    all: unset;
+    padding: 1rem 0 2rem 0;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 1.3rem;
+    color: white;
+  }
+
+  .tweet input::placeholder {
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 1.3rem;
+  }
+
+  .tweet .right .bottom .icon {
+    width: 20px;
+    fill: rgb(29, 155, 240);
+    padding: 0 5px 0 5px;
+  }
+
+  .tweet .right .bottom {
+    width: 500px;
+    display: flex;
+  }
+
+  button {
+    all: unset;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 1.1rem;
+    color: white;
+    background: rgb(29, 155, 240);
+    padding: 6px 15px 6px 15px;
+    border-radius: 20px;
+  }
+
+  .tweet .right .bottom div:last-of-type {
+    display: flex;
+    margin-left: auto;
+  }
+
+  #tweets .right .bottom div {
+    padding: 0 1rem 0 1rem;
   }
 }
