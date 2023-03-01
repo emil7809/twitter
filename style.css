@@ -58,6 +58,10 @@ nav .icon,
   display: block;
 }
 
+.only_desktop {
+  display: none;
+}
+
 #home_top {
   display: flex;
   align-items: center;
@@ -273,5 +277,120 @@ nav .icon,
 
   #tweets .right .bottom div {
     padding: 0 1rem 0 1rem;
+  }
+}
+
+@media (min-width: 990px) {
+  .only_desktop {
+    display: block;
+  }
+
+  main {
+    display: grid;
+    grid-template-columns: 3rem 600px 320px;
+    justify-content: center;
+  }
+
+  #nav_700 {
+    width: 3rem;
+  }
+  #right_col {
+    padding-left: 1.3rem;
+  }
+  #right_col input {
+    all: unset;
+  }
+  #right_col .input_container {
+    display: flex;
+    align-items: center;
+    background: #16181c;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 1rem;
+    color: white;
+    width: 327px;
+    padding: 0.8rem;
+    border-radius: 100px;
+    position: fixed;
+    top: 10px;
+    box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.5);
+  }
+
+  #right_col .input_container .icon {
+    width: 1.2rem;
+    fill: rgb(113, 118, 123);
+    margin-right: 1rem;
+  }
+
+  #right_col input::placeholder {
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 1rem;
+    color: rgb(113, 118, 123);
+  }
+
+  #trends_container,
+  #who_to_follow {
+    background: #16181c;
+    border-radius: 16px;
+    width: 320px;
+    padding: 1rem;
+    margin-top: 4rem;
+  }
+
+  #trends_container h2,
+  #who_to_follow h2 {
+    margin: 0;
+    margin-bottom: 1rem;
+  }
+
+  #trends_container .trend {
+    margin-bottom: 1rem;
+  }
+
+  #trends_container .trend p {
+    margin: 3px;
+  }
+  #trends_container .trend .small_txt,
+  #who_to_follow .follow .small_txt {
+    color: rgb(113, 118, 123);
+  }
+
+  #trends_container p:last-of-type,
+  #who_to_follow p:last-of-type {
+    color: rgb(29, 155, 240);
+    margin-bottom: 0;
+  }
+
+  #who_to_follow {
+    margin-top: 1rem;
+  }
+
+  #who_to_follow .follow {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+
+  #who_to_follow .follow img {
+    width: 3.3rem;
+    height: 3.3rem;
+    border-radius: 100px;
+  }
+
+  #who_to_follow .follow button {
+    color: black;
+    background: white;
+    height: 1.3rem;
+  }
+
+  #who_to_follow p,
+  #who_to_follow a {
+    text-decoration: none;
+    margin: 0;
+  }
+
+  .small_txt {
+    color: rgb(113, 118, 123);
   }
 }
