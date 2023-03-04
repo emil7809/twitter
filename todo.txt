@@ -1,0 +1,5 @@
+tweet timestamp
+fix tweet img
+fix tweet avatar in to cirkle
+tweet sum up big numbers
+include if verified
