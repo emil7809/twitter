@@ -58,15 +58,15 @@ def _(username):
             str(pathlib.Path(__file__).parent.resolve())+"/twitter.db")
         db.row_factory = dict_factory
         users = db.execute("SELECT * FROM users").fetchall()
-        the_user = db.execute(
+        user = db.execute(
             "SELECT * FROM users WHERE user_username=? COLLATE NOCASE", (username,)).fetchall()[0]
 
-        user_id = the_user["user_id"]
-        user_name = the_user["user_name"]
+        user_id = user["user_id"]
+        user_name = user["user_username"]
         tweets = db.execute(
             "SELECT * FROM tweets WHERE tweet_user_fk=?", (user_id,)).fetchall()
 
-        return template("profile", the_user=the_user, users=users, trends=trends, tweets=tweets, title=user_name)
+        return template("profile", user=user, users=users, trends=trends, tweets=tweets, title=user_name)
     except Exception as ex:
         print(ex)
         return "error"
