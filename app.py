@@ -43,8 +43,8 @@ def _():
         #print(users)
         users_and_tweets = db.execute(
             'SELECT * FROM users JOIN tweets ON user_id = tweet_user_fk ORDER BY tweet_created_at ASC LIMIT 0, 10').fetchall()
-        print("#"*30)
-        print(users_and_tweets)
+        #print("#"*30)
+        #print(users_and_tweets)
 
         return template("index", trends=trends, users_and_tweets=users_and_tweets, users=users)
 
