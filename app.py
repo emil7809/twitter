@@ -38,7 +38,7 @@ def _():
         db.row_factory = dict_factory
 
         #tweets = db.execute("SELECT * FROM tweets").fetchall()
-        #users = db.execute("SELECT * FROM users").fetchall()
+        users = db.execute("SELECT * FROM users").fetchall()
         # print(tweets)
         #print(users)
         users_and_tweets = db.execute(
@@ -46,7 +46,7 @@ def _():
         print("#"*30)
         print(users_and_tweets)
 
-        return template("index", trends=trends, users_and_tweets=users_and_tweets)
+        return template("index", trends=trends, users_and_tweets=users_and_tweets, users=users)
 
     except Exception as ex:
         print(ex)
@@ -70,8 +70,11 @@ def _(username):
         user_name = user["user_username"]
         tweets = db.execute(
             "SELECT * FROM tweets WHERE tweet_user_fk=?", (user_id,)).fetchall()
+        
+        users_and_tweets = db.execute(
+            'SELECT * FROM users JOIN tweets ON user_id = tweet_user_fk WHERE tweet_user_fk=?', (user_id,)).fetchall()
 
-        return template("profile", user=user, users=users, trends=trends, tweets=tweets, title=user_name)
+        return template("profile", user=user, users=users, trends=trends, tweets=tweets, title=user_name, users_and_tweets=users_and_tweets)
     except Exception as ex:
         print(ex)
         return "error"
