@@ -9,8 +9,29 @@
         </svg>
         <input type="search" placeholder="Search Twitter">
     </div>
+
+    <section id="who_to_follow">
+
+        <h2>Who to follow</h2>
+        % for user in users:
+        <a href='{{user["user_username"]}}'>
+            <div class="follow">
+                <img src="../avatars/{{user['user_avatar']}}" alt="avatar">
+                <div>
+                    <p>{{user["user_name"]}} {{user["user_last_name"]}}</p>
+                    <p class="small_txt">@{{user["user_username"]}}</p>
+                </div>
+                <button>Follow</button>
+            </div>
+        </a>
+        % end
+
+        <p>Show more</p>
+
+    </section>
     <section id="trends_container">
         <h2>Trends for you</h2>
+        % for trend in trends:
         <div class="trend">
             <div>
                 <div class="flex">
@@ -25,92 +46,12 @@
                         </svg>
                     </div>
                 </div>
-                <p>TikTok</p>
-                <p class="small_txt">31.7K Tweets</p>
+                <p>{{trend["title"]}}</p>
+                <p class="small_txt">{{trend["total_tweets"]}} Tweets</p>
             </div>
         </div>
-        <div class="trend">
-            <div>
-                <div class="flex">
-                    <p class="small_txt">Trending in Denmark</p>
-                    <div class="dots">
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                            <g>
-                                <path
-                                    d="M3 12c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm9 2c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm7 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z">
-                                </path>
-                            </g>
-                        </svg>
-                    </div>
-                </div>
-                <p>TikTok</p>
-                <p class="small_txt">31.7K Tweets</p>
-            </div>
-        </div>
-        <div class="trend">
-            <div>
-                <div class="flex">
-                    <p class="small_txt">Trending in Denmark</p>
-                    <div class="dots">
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                            <g>
-                                <path
-                                    d="M3 12c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm9 2c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm7 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z">
-                                </path>
-                            </g>
-                        </svg>
-                    </div>
-                </div>
-                <p>TikTok</p>
-                <p class="small_txt">31.7K Tweets</p>
-            </div>
-        </div>
-        <div class="trend">
-            <div>
-                <div class="flex">
-                    <p class="small_txt">Trending in Denmark</p>
-                    <div class="dots">
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                            <g>
-                                <path
-                                    d="M3 12c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm9 2c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm7 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z">
-                                </path>
-                            </g>
-                        </svg>
-                    </div>
-                </div>
-                <p>TikTok</p>
-                <p class="small_txt">31.7K Tweets</p>
-            </div>
-        </div>
+        % end
         <p>Show more</p>
-    </section>
-    <section id="who_to_follow">
-        <h2>Who to follow</h2>
-
-        <a href="">
-            <div class="follow">
-                <img src="/avatars/3241833862223278091212398478751436238862888n.jpg">
-                <div>
-                    <p>Emily Hoolahan</p>
-                    <p class="small_txt">@emilyhoolahan</p>
-                </div>
-                <button>Follow</button>
-            </div>
-        </a>
-        <a href="">
-            <div class="follow">
-                <img src="/avatars/3241833862223278091212398478751436238862888n.jpg">
-                <div>
-                    <p>Emily Hoolghdyhsahan</p>
-                    <p class="small_txt">@emilyhoolahan</p>
-                </div>
-                <button>Follow</button>
-            </div>
-        </a>
-
-        <p>Show more</p>
-
     </section>
     <p class="small_txt">Terms of Service
         Privacy Policy
@@ -123,6 +64,6 @@
 </main>
 <footer>footer</footer>
 </body>
-lå
+
 
 </html>

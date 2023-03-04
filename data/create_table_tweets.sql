@@ -15,11 +15,11 @@ CREATE TABLE tweets(
 ) WITHOUT ROWID;
 
 INSERT INTO tweets VALUES(
-  "4e638cbc-d027-472f-acf5-080f336bdb83", 
-  "1ad43d14-5740-45a3-9006-da33bc476d20",
+  "4e638cbcd027472facf5080f336bdb83", 
+  "1ad43d14574045a39006da33bc476d20",
   "1672064261",
   "I’m delighted",
-  "4e638cbc-d027-472f-acf5-080f336bdb83.jpg",
+  "4e638cbcd027472facf5080f336bdb83.jpg",
   "0",
   "362",
   "2582",
@@ -28,11 +28,11 @@ INSERT INTO tweets VALUES(
   );
 
 INSERT INTO tweets VALUES(
-  "a6008189-4764-4cfd-bd51-987e81886091", 
-  "32d322f9-8580-4fea-8e9f-7525053df778",
+  "a600818947644cfdbd51987e81886091", 
+  "32d322f985804fea8e9f7525053df778",
   "1676729861",
   "IT'S HERE! Did you guess the new channel right??",
-  "a6008189-4764-4cfd-bd51-987e81886091.jpg",
+  "a600818947644cfdbd51987e81886091.jpg",
   "0",
   "2988",
   "33800",
@@ -41,8 +41,8 @@ INSERT INTO tweets VALUES(
   );
 
 INSERT INTO tweets VALUES(
-  "ab9210ea-d615-4bc3-b160-14acbf47fd6c", 
-  "32d322f9-8580-4fea-8e9f-7525053df778",
+  "ab9210ead6154bc3b16014acbf47fd6c", 
+  "32d322f985804fea8e9f7525053df778",
   "1675347461",
   "Exciting news: Theorist is HIRING! ",
   "",
@@ -54,11 +54,11 @@ INSERT INTO tweets VALUES(
   );
 
 INSERT INTO tweets VALUES(
-  "b7036182-edf1-490c-b5ad-78e981df647d", 
-  "773fb079-ed8d-464e-b8be-f39d2c843128",
+  "b7036182edf1490cb5ad78e981df647d", 
+  "773fb079ed8d464eb8bef39d2c843128",
   "1676740661",
   "Surround your house with treadmills set to jogging speed to stop walking dead ur welcome",
-  "b7036182-edf1-490c-b5ad-78e981df647d.jpg",
+  "b7036182edf1490cb5ad78e981df647d.jpg",
   "0",
   "36200",
   "454300",

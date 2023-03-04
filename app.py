@@ -37,11 +37,16 @@ def _():
             str(pathlib.Path(__file__).parent.resolve())+"/twitter.db")
         db.row_factory = dict_factory
 
-        tweets = db.execute("SELECT * FROM tweets").fetchall()
+        #tweets = db.execute("SELECT * FROM tweets").fetchall()
         users = db.execute("SELECT * FROM users").fetchall()
         # print(tweets)
+        #print(users)
+        users_and_tweets = db.execute(
+            'SELECT * FROM users JOIN tweets ON user_id = tweet_user_fk').fetchall()
+        print("#"*30)
+        print(users_and_tweets)
 
-        return template("index", trends=trends, tweets=tweets, users=users)
+        return template("index", trends=trends, users_and_tweets=users_and_tweets, users=users)
 
     except Exception as ex:
         print(ex)
@@ -58,15 +63,18 @@ def _(username):
             str(pathlib.Path(__file__).parent.resolve())+"/twitter.db")
         db.row_factory = dict_factory
         users = db.execute("SELECT * FROM users").fetchall()
-        the_user = db.execute(
+        user = db.execute(
             "SELECT * FROM users WHERE user_username=? COLLATE NOCASE", (username,)).fetchall()[0]
 
-        user_id = the_user["user_id"]
-        user_name = the_user["user_name"]
+        user_id = user["user_id"]
+        user_name = user["user_username"]
         tweets = db.execute(
             "SELECT * FROM tweets WHERE tweet_user_fk=?", (user_id,)).fetchall()
+        
+        users_and_tweets = db.execute(
+            'SELECT * FROM users JOIN tweets ON user_id = tweet_user_fk WHERE tweet_user_fk=?', (user_id,)).fetchall()
 
-        return template("profile", the_user=the_user, users=users, trends=trends, tweets=tweets, title=user_name)
+        return template("profile", user=user, users=users, trends=trends, tweets=tweets, title=user_name, users_and_tweets=users_and_tweets)
     except Exception as ex:
         print(ex)
         return "error"
@@ -83,6 +91,14 @@ def _():
 @get("/avatars/<filename:re:.*\.jpg>")
 def _(filename):
     return static_file(filename, root="./avatars")
+
+@get("/tweet_images/<filename:re:.*\.jpg>")
+def _(filename):
+    return static_file(filename, root="./tweet_images")
+
+@get("/user_cover/<filename:re:.*\.jpg>")
+def _(filename):
+    return static_file(filename, root="./user_cover")
 
 try:
   import production
