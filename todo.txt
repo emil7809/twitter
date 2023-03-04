@@ -1,6 +1,3 @@
-A user can have many, many tweets. Display the latest 10 tweets from each user.
-This means that if you visit elonmusk, then his 10 latest tweets will show.
-If you visit michelleobama, then her latest 10 tweets will be shown.
 
 This has to work/deploy on AWS. 
 

@@ -42,7 +42,7 @@ def _():
         # print(tweets)
         #print(users)
         users_and_tweets = db.execute(
-            'SELECT * FROM users JOIN tweets ON user_id = tweet_user_fk').fetchall()
+            'SELECT * FROM users JOIN tweets ON user_id = tweet_user_fk ORDER BY tweet_created_at ASC LIMIT 0, 10').fetchall()
         print("#"*30)
         print(users_and_tweets)
 
@@ -68,13 +68,12 @@ def _(username):
 
         user_id = user["user_id"]
         user_name = user["user_username"]
-        tweets = db.execute(
-            "SELECT * FROM tweets WHERE tweet_user_fk=?", (user_id,)).fetchall()
+       
         
         users_and_tweets = db.execute(
-            'SELECT * FROM users JOIN tweets ON user_id = tweet_user_fk WHERE tweet_user_fk=?', (user_id,)).fetchall()
+            'SELECT * FROM users JOIN tweets ON user_id = tweet_user_fk WHERE tweet_user_fk=? ORDER BY tweet_created_at ASC LIMIT 0, 10', (user_id,)).fetchall()
 
-        return template("profile", user=user, users=users, trends=trends, tweets=tweets, title=user_name, users_and_tweets=users_and_tweets)
+        return template("profile", user=user, users=users, trends=trends, title=user_name, users_and_tweets=users_and_tweets)
     except Exception as ex:
         print(ex)
         return "error"
