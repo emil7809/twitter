@@ -1,12 +1,12 @@
 <section id="tweets">
-    % for tweet in tweets:
+    % for tweet in users_and_tweets:
     <div class="tweet">
         <div>
             <img class="avatar" src="../avatars/{{['user_avatar']}}" alt="avatar">
         </div>
         <div class="right">
             <div class="top">
-                <p>username</p>
+                <p>{{tweet["user_username"]}}</p>
                 <svg viewBox="0 0 24 24" aria-label="Verified account" role="img" class="check"
                     data-testid="icon-verified">
                     <g>

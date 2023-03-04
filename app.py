@@ -37,11 +37,16 @@ def _():
             str(pathlib.Path(__file__).parent.resolve())+"/twitter.db")
         db.row_factory = dict_factory
 
-        tweets = db.execute("SELECT * FROM tweets").fetchall()
-        users = db.execute("SELECT * FROM users").fetchall()
+        #tweets = db.execute("SELECT * FROM tweets").fetchall()
+        #users = db.execute("SELECT * FROM users").fetchall()
         # print(tweets)
+        #print(users)
+        users_and_tweets = db.execute(
+            'SELECT * FROM users JOIN tweets ON user_id = tweet_user_fk').fetchall()
+        print("#"*30)
+        print(users_and_tweets)
 
-        return template("index", trends=trends, tweets=tweets, users=users)
+        return template("index", trends=trends, users_and_tweets=users_and_tweets)
 
     except Exception as ex:
         print(ex)
