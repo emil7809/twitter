@@ -96,6 +96,10 @@ def _(filename):
 def _(filename):
     return static_file(filename, root="./tweet_images")
 
+@get("/user_cover/<filename:re:.*\.jpg>")
+def _(filename):
+    return static_file(filename, root="./user_cover")
+
 try:
   import production
   application = default_app()

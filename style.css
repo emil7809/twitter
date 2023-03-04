@@ -222,7 +222,7 @@ nav .icon,
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: -2.8rem;
+  margin-top: -4rem;
 }
 #user_profile .profile_picture {
   width: 5.5rem;
@@ -233,9 +233,10 @@ nav .icon,
 #user_profile .user_top_info .icon {
   fill: white;
   width: 1.2rem;
+  /*  height: 2rem; */
   border: 1px rgb(128, 128, 128) solid;
   border-radius: 100px;
-  padding: 5px;
+  padding: 8px;
   margin: 0 5px 0 5px;
 }
 
@@ -243,14 +244,17 @@ nav .icon,
   all: unset;
   color: white;
   font-family: "Source Sans Pro", sans-serif;
-  font-size: 1.1rem;
+  font-size: 1rem;
   border: 1px rgb(128, 128, 128) solid;
   border-radius: 100px;
-  padding: 10px;
+  padding: 6px;
   margin-left: 5px;
   z-index: 10;
   /* position: sticky;
   top: 0; */
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 10px 15px 10px 15px;
 }
 
 #user_more_info .user_info {
@@ -278,8 +282,10 @@ nav .icon,
 }
 
 #user_profile .user_top_info .info_next_to_profile_picture {
+  /* display: flex;
+  align-items: center; */
   display: flex;
-  align-items: center;
+  align-self: end;
 }
 
 @media (min-width: 700px) {
@@ -410,6 +416,15 @@ nav .icon,
   #right_col {
     padding-left: 1.3rem;
   }
+
+  #user_profile .profile_picture {
+    width: 8rem;
+  }
+
+  #user_profile .user_top_info {
+    margin-top: -6.5rem;
+  }
+
   #right_col input {
     all: unset;
   }
