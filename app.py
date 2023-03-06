@@ -1,10 +1,37 @@
 # https://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@github.com/emil7809/twitter.git
 
-from bottle import default_app, get, run, template, static_file, post
+from bottle import default_app, get, run, request, response, template, static_file, post
 import sqlite3
 import pathlib
 import git
 
+##############################
+@get("/login_page")
+def _():
+    return template("login_page")
+
+@get("/logout")
+def _():
+    response.set_cookie("user", "", expires=0)
+    response.status=303
+    response.set_header("Location", "/")
+    return 
+
+
+@get("/profile2")
+def _():
+    response.add_header("Cache-Control", "no-cashe, no-store, must-revalidate, max-age=0")
+    response.add_header("Pragma", "no-cashe")
+    response.add_header("Expires", 0)
+    user = request.get_cookie("user", secret="my-secret")
+    #if not user:
+     #   response.status = 303
+      #  response.set_header("Location", "/login")
+       # return
+   # user_name = "My user name here"
+    return template("profile2", user=user )
+
+import bridges.login
 ##############################
 
 
@@ -31,8 +58,13 @@ def git_update():
 
 
 @get("/")
+ 
 def _():
     try:
+        response.add_header("Cache-Control", "no-cashe, no-store, must-revalidate, max-age=0")
+        response.add_header("Pragma", "no-cashe")
+        response.add_header("Expires", 0)
+        me = request.get_cookie("user", secret="my-secret")
         db = sqlite3.connect(
             str(pathlib.Path(__file__).parent.resolve())+"/twitter.db")
         db.row_factory = dict_factory
@@ -46,7 +78,7 @@ def _():
         #print("#"*30)
         #print(users_and_tweets)
 
-        return template("index", trends=trends, users_and_tweets=users_and_tweets, users=users)
+        return template("index", me=me, trends=trends, users_and_tweets=users_and_tweets, users=users)
 
     except Exception as ex:
         print(ex)
