@@ -22,17 +22,8 @@ def _():
         "user_last_name":"Hoolahan"
     }
 
-    db = sqlite3.connect(
-            str(pathlib.Path(__file__).parent.resolve())+"/twitter.db")
-    db.row_factory = dict_factory
-
-        #tweets = db.execute("SELECT * FROM tweets").fetchall()
-    user = db.execute("SELECT * FROM users").fetchall()[0]
-    print("#"*30)
-    print(user)
-    print("#"*30)
     # cookie_experation_date = int(time.time())+ 7200
-    response.set_cookie("user", user, secret="my-secret", httponly=True)
+    response.set_cookie("user", user_x, secret="my-secret", httponly=True)
     response.status = 303
     response.set_header("Location", "/")
     return "This is the bridge"
