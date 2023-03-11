@@ -1,4 +1,4 @@
-# https://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@github.com/emil7809/twitter.git
+# https://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@github.com/emil7809/twitter.git
 
 from bottle import default_app, get, run, template, static_file, post, response, request
 import x
@@ -17,9 +17,9 @@ trends = [
 
 @post('/secret_url_for_git_hook')
 def git_update():
-  repo = git.Repo('./twitter')
+  repo = git.Repo('./mysite')
   origin = repo.remotes.origin
-  repo.create_head('main', origin.refs.main).set_tracking_branch(origin.refs.main).checkout()
+  repo.create_head('Master', origin.refs.main).set_tracking_branch(origin.refs.main).checkout()
   origin.pull()
   return ""
 
