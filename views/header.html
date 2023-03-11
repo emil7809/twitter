@@ -106,6 +106,7 @@
               </path>
             </g>
           </svg></a>
+        % if not me:
         <form action="/login">
           <button style="all:unset">
             <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
@@ -115,7 +116,12 @@
             </svg>
           </button>
         </form>
+        % end
 
-        <!-- <img class="smol_img" src="/avatars/cdd0a0a3be06427f84111a767e9729f9.jpg"> -->
+        % if me:
+        <form action="/logout">
+          <button style="all:unset"><img class="smol_img" src="/avatars/cdd0a0a3be06427f84111a767e9729f9.jpg"></button>
+        </form>
+        % end
       </div>
     </section>

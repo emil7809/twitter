@@ -1,9 +1,10 @@
 # https://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@github.com/emil7809/twitter.git
 
-from bottle import default_app, get, run, template, static_file, post
+from bottle import default_app, get, run, template, static_file, post, response, request
 import sqlite3
 import pathlib
 import git
+import bridge_login
 
 ##############################
 
@@ -33,6 +34,10 @@ def git_update():
 @get("/")
 def _():
     try:
+        response.add_header("Cache-Control", "no-cashe, no-store, must-revalidate, max-age=0")
+        response.add_header("Pragma", "no-cashe")
+        response.add_header("Expires", 0)
+        me = request.get_cookie("user", secret="my-secret")
         db = sqlite3.connect(
             str(pathlib.Path(__file__).parent.resolve())+"/twitter.db")
         db.row_factory = dict_factory
@@ -46,7 +51,7 @@ def _():
         #print("#"*30)
         #print(users_and_tweets)
 
-        return template("index", trends=trends, users_and_tweets=users_and_tweets, users=users)
+        return template("index", me=me, trends=trends, users_and_tweets=users_and_tweets, users=users)
 
     except Exception as ex:
         print(ex)
@@ -60,9 +65,21 @@ def _():
 def _():
     return template("login")
 
+
+@get("/logout")
+def _():
+    response.set_cookie("user", "", expires=0)
+    response.status=303
+    response.set_header("Location", "/")
+    return 
+
 @get("/<username>")
 def _(username):
     try:
+        response.add_header("Cache-Control", "no-cashe, no-store, must-revalidate, max-age=0")
+        response.add_header("Pragma", "no-cashe")
+        response.add_header("Expires", 0)
+        me = request.get_cookie("user", secret="my-secret")
         db = sqlite3.connect(
             str(pathlib.Path(__file__).parent.resolve())+"/twitter.db")
         db.row_factory = dict_factory
@@ -77,7 +94,7 @@ def _(username):
         users_and_tweets = db.execute(
             'SELECT * FROM users JOIN tweets ON user_id = tweet_user_fk WHERE tweet_user_fk=? ORDER BY tweet_created_at ASC LIMIT 0, 10', (user_id,)).fetchall()
 
-        return template("profile", user=user, users=users, trends=trends, title=user_name, users_and_tweets=users_and_tweets)
+        return template("profile", me=me, user=user, users=users, trends=trends, title=user_name, users_and_tweets=users_and_tweets)
     except Exception as ex:
         print(ex)
         return "error"
