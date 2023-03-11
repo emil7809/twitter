@@ -1,19 +1,13 @@
 # https://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@github.com/emil7809/twitter.git
 
 from bottle import default_app, get, run, template, static_file, post, response, request
+import x
 import sqlite3
 import pathlib
 import git
 import bridge_login
-
-##############################
-
-
-def dict_factory(cursor, row):
-    col_names = [col[0] for col in cursor.description]
-    return {key: value for key, value in zip(col_names, row)}
-
-##############################
+import views.new_tweets
+import api.api_tweet
 
 
 trends = [
@@ -38,10 +32,10 @@ def _():
         response.add_header("Pragma", "no-cashe")
         response.add_header("Expires", 0)
         me = request.get_cookie("user", secret="my-secret")
-        db = sqlite3.connect(
-            str(pathlib.Path(__file__).parent.resolve())+"/twitter.db")
-        db.row_factory = dict_factory
-
+        #db = sqlite3.connect(
+        #    str(pathlib.Path(__file__).parent.resolve())+"/twitter.db")
+        #db.row_factory = dict_factory
+        db = x.db()
         #tweets = db.execute("SELECT * FROM tweets").fetchall()
         users = db.execute("SELECT * FROM users").fetchall()
         # print(tweets)
@@ -80,9 +74,7 @@ def _(username):
         response.add_header("Pragma", "no-cashe")
         response.add_header("Expires", 0)
         me = request.get_cookie("user", secret="my-secret")
-        db = sqlite3.connect(
-            str(pathlib.Path(__file__).parent.resolve())+"/twitter.db")
-        db.row_factory = dict_factory
+        db = x.db()
         users = db.execute("SELECT * FROM users").fetchall()
         user = db.execute(
             "SELECT * FROM users WHERE user_username=? COLLATE NOCASE", (username,)).fetchall()[0]
