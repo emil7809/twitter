@@ -6,7 +6,6 @@ import sqlite3
 import pathlib
 import git
 import bridge_login
-import views.new_tweets
 import api.api_tweet
 
 
