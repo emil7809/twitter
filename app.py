@@ -18,7 +18,7 @@ trends = [
 
 @post('/secret_url_for_git_hook')
 def git_update():
-  repo = git.Repo('./mysite')
+  repo = git.Repo('./twitter')
   origin = repo.remotes.origin
   repo.create_head('Master', origin.refs.main).set_tracking_branch(origin.refs.main).checkout()
   origin.pull()
