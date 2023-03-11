@@ -56,6 +56,10 @@ def _():
             db.close()
 
 
+@get("/login")
+def _():
+    return template("login")
+
 @get("/<username>")
 def _(username):
     try:
