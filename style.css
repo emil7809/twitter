@@ -126,21 +126,26 @@ nav .icon,
 }
 
 #tweets .right .top,
-#tweets .right .top .info {
+#tweets .right .top .info,
+#my_tweets .right .top,
+#my_tweets .right .top .info {
   display: flex;
   align-items: center;
 }
 
-#tweets .right .top .info p {
+#tweets .right .top .info p,
+#my_tweets .right .top .info p {
   color: rgb(113, 118, 123);
   padding: 0 2px 0 2px;
 }
 
-#tweets .right .message {
+#tweets .right .message,
+#my_tweets .right .message {
   margin-top: 0;
 }
 
-#tweets .right img {
+#tweets .right img,
+#my_tweets .right img {
   border-radius: 8px;
 }
 
@@ -163,23 +168,28 @@ nav .icon,
   fill: rgb(29, 155, 240);
 }
 
-#tweets .right .bottom {
+#tweets .right .bottom,
+#my_tweets .right .bottom {
   display: flex;
   /* justify-content: space-between; */
 }
 
-#tweets .right .bottom p {
+#tweets .right .bottom p,
+#my_tweets .right .bottom p {
   color: rgb(113, 118, 123);
 }
-#tweets .right .bottom .icon {
+#tweets .right .bottom .icon,
+#my_tweets .right .bottom .icon {
   width: 20px;
   fill: rgb(113, 118, 123);
   padding: 0 5px 0 5px;
 }
-#tweets .right .bottom div {
+#tweets .right .bottom div,
+#my_tweets .right .bottom div {
   padding: 0 5px 0 5px;
 }
-#tweets .right .bottom div:last-of-type {
+#tweets .right .bottom div:last-of-type,
+#my_tweets .right .bottom div:last-of-type {
   display: flex;
   align-items: center;
   margin-left: auto;
@@ -384,7 +394,8 @@ nav .icon,
     margin-left: auto;
   }
 
-  #tweets .right .bottom div {
+  #tweets .right .bottom div,
+  #my_tweets .right .bottom div {
     padding: 0 1rem 0 1rem;
   }
 

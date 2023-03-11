@@ -1,5 +1,5 @@
-% for tweet in users_and_tweets:
 <section id="tweets">
+    % for tweet in users_and_tweets:
     <div class="tweet">
         <div>
             <img class="avatar" src="../avatars/{{tweet['user_avatar']}}" alt="avatar">
@@ -94,5 +94,5 @@
             </div>
         </div>
     </div>
+    % end
 </section>
-% end

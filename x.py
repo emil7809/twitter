@@ -19,8 +19,8 @@ def db():
   finally:
     pass
 
-TWEET_MIN_LEN = 2
-TWEET_MAX_LEN = 5
+TWEET_MIN_LEN = 1
+TWEET_MAX_LEN = 280
 
 def validate_tweet():
   error = f"Meassage must be between {TWEET_MIN_LEN} and {TWEET_MAX_LEN} characters"

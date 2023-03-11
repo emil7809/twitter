@@ -10,6 +10,7 @@ import views.new_tweets
 import api.api_tweet
 
 
+
 trends = [
     {"title": "Norge", "total_tweets": "1,693"},
     {"title": "Otto", "total_tweets": "20K"}
@@ -41,11 +42,11 @@ def _():
         # print(tweets)
         #print(users)
         users_and_tweets = db.execute(
-            'SELECT * FROM users JOIN tweets ON user_id = tweet_user_fk ORDER BY tweet_created_at ASC LIMIT 0, 10').fetchall()
+            'SELECT * FROM users JOIN tweets ON user_id = tweet_user_fk ORDER BY tweet_created_at DESC LIMIT 0, 10').fetchall()
         #print("#"*30)
         #print(users_and_tweets)
 
-        return template("index", me=me, trends=trends, users_and_tweets=users_and_tweets, users=users)
+        return template("index", me=me, trends=trends, users_and_tweets=users_and_tweets, users=users, tweet_min_len=x.TWEET_MIN_LEN, tweet_max_len=x.TWEET_MAX_LEN)
 
     except Exception as ex:
         print(ex)
@@ -84,7 +85,7 @@ def _(username):
        
         
         users_and_tweets = db.execute(
-            'SELECT * FROM users JOIN tweets ON user_id = tweet_user_fk WHERE tweet_user_fk=? ORDER BY tweet_created_at ASC LIMIT 0, 10', (user_id,)).fetchall()
+            'SELECT * FROM users JOIN tweets ON user_id = tweet_user_fk WHERE tweet_user_fk=? ORDER BY tweet_created_at DESC LIMIT 0, 10', (user_id,)).fetchall()
 
         return template("profile", me=me, user=user, users=users, trends=trends, title=user_name, users_and_tweets=users_and_tweets)
     except Exception as ex:
@@ -99,6 +100,9 @@ def _(username):
 def _():
     return static_file("style.css", root=".")
 
+@get("/js/validate.js")
+def _():
+    return static_file("validate.js", root="./js")
 
 @get("/avatars/<filename:re:.*\.jpg>")
 def _(filename):
