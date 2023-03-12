@@ -12,7 +12,7 @@
 <body>
     <section id="login">
 
-        <form method="POST" action="/login">
+        <form>
             <svg viewBox="0 0 24 24" aria-hidden="true" class="icon logo">
                 <g>
                     <path
@@ -20,12 +20,14 @@
                     </path>
                 </g>
             </svg>
-            <input name="email" type="email" placeholder="Email">
-            <input name="password" type="password" placeholder="Password">
-            <button>Login</button>
+            <input name="user_email" type="email" placeholder="Email" data-validate="email">
+            <input name="user_password" type="password" placeholder="Password">
+            <button type="button" onclick="validate(login); return false" data-default="Login"
+                data-await="Please wait ...">Login</button>
         </form>
     </section>
-
+    <script src="/js/validate.js"></script>
+    <script src="/js/app.js"></script>
 </body>
 
 </html>

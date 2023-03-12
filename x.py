@@ -23,13 +23,13 @@ def db():
 ##############################
 
 TWEET_MIN_LEN = 1
-TWEET_MAX_LEN = 5
+TWEET_MAX_LEN = 280
 
 def validate_tweet():
   error = f"Meassage must be between {TWEET_MIN_LEN} and {TWEET_MAX_LEN} characters"
-  if len(request.forms.tweet_message) < TWEET_MIN_LEN: raise Exception(error)
-  if len(request.forms.tweet_message) > TWEET_MAX_LEN: raise Exception(error)
-  return request.forms.get("message")
+  if len(request.forms.message) < TWEET_MIN_LEN: raise Exception(error)
+  if len(request.forms.message) > TWEET_MAX_LEN: raise Exception(error)
+  return request.forms.message
 
 ##############################
 
@@ -44,7 +44,7 @@ def validate_email():
   request.forms.user_email = request.forms.user_email.strip()
   if len(request.forms.user_email) < EMAIL_MIN: raise Exception(400, error)
   if len(request.forms.user_email) > EMAIL_MAX: raise Exception(400, error)
-  if not re.match(EMAIL_REGEX, request.formsuser_email):raise Exception(400, error)
+  if not re.match(EMAIL_REGEX, request.forms.user_email):raise Exception(400, error)
   return request.forms.user_email
 
 ##############################

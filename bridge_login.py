@@ -1,4 +1,4 @@
-from bottle import post, response
+""" from bottle import post, response
 
 @post("/login")
 def _():
@@ -13,4 +13,4 @@ def _():
     response.status = 303
     #response.set_header("Location", "/bridge_login")
     response.set_header("Location", "/")
-    return "This is the bridge"
+    return "This is the bridge" """

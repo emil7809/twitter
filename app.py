@@ -8,6 +8,7 @@ import pathlib
 import git
 import bridge_login
 import api.api_tweet
+import api.api_login
 
 
 
@@ -32,7 +33,7 @@ def _():
         response.add_header("Cache-Control", "no-cashe, no-store, must-revalidate, max-age=0")
         response.add_header("Pragma", "no-cashe")
         response.add_header("Expires", 0)
-        me = request.get_cookie("user", secret="my-secret")
+        me = request.get_cookie("user", secret=x.MY_COOKIE_SECRET)
         #db = sqlite3.connect(
         #    str(pathlib.Path(__file__).parent.resolve())+"/twitter.db")
         #db.row_factory = dict_factory
@@ -58,6 +59,10 @@ def _():
 
 @get("/login")
 def _():
+    user = request.get_cookie("user", secret=x.MY_COOKIE_SECRET)
+    if user:
+        response.status = 303
+        response.set_header("Location", f"/{user['user_username']}")
     return template("login")
 
 

@@ -108,3 +108,25 @@
         );
 
     }
+
+    async function login() {
+        const btn = event.target
+        btn.disabled = true
+        btn.innerText = btn.getAttribute("data-await")
+
+        const frm = event.target.form
+        const conn = await fetch("/api-login", {
+            method: "POST",
+            body: new FormData(frm)
+        })
+
+        btn.disabled = false
+        btn.innerText = btn.getAttribute("data-default")
+        if (!conn.ok){
+            console.log("cannot login")
+            return
+        }
+        const data = await conn.json();
+        console.log(data);
+        location.href = "/"
+    }
