@@ -79,7 +79,7 @@ def _(username):
         response.add_header("Cache-Control", "no-cashe, no-store, must-revalidate, max-age=0")
         response.add_header("Pragma", "no-cashe")
         response.add_header("Expires", 0)
-        me = request.get_cookie("user", secret="my-secret")
+        me = request.get_cookie("user", secret=x.MY_COOKIE_SECRET)
         db = x.db()
         users = db.execute("SELECT * FROM users").fetchall()
         user = db.execute(
