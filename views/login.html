@@ -1,3 +1,4 @@
+% import x
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,7 +22,8 @@
                 </g>
             </svg>
             <input name="user_email" type="email" placeholder="Email" data-validate="email">
-            <input name="user_password" type="password" placeholder="Password">
+            <input name="user_password" type="password" placeholder="Password" data-validate="str"
+                data-min="{{x.PASSWORD_MIN}}" data-max="{{x.PASSWORD_MAX}}">
             <button type="button" onclick="validate(login); return false" data-default="Login"
                 data-await="Please wait ...">Login</button>
         </form>

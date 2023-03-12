@@ -7,6 +7,7 @@ def _():
         user = request.get_cookie("user", secret=x.MY_COOKIE_SECRET)
         if user: return {"info":"Success login", "user_name":user["user_name"]}
         user_email = x.validate_email()
+        #x.validate_password()
         db = x.db()
         user = db.execute("SELECT * FROM users WHERE user_email = ? LIMIT 1", (user_email,)).fetchone()
         if not user: raise Exception("cannot login")

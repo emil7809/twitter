@@ -52,11 +52,14 @@ def validate_email():
 
 ##############################
 
-PASSWORD_MIN_LEN = 5
+PASSWORD_MIN = 3
+PASSWORD_MAX = 10
 
 def validate_password():
-  error = f"You'r Password must be at least {PASSWORD_MIN_LEN} characters"
-  if len(request.forms.user_password) < PASSWORD_MIN_LEN: raise Exception(error)
+  error = f"You'r Password must be at least {PASSWORD_MIN} characters"
+  request.forms.user_password = request.forms.user_password.strip()
+  if len(request.forms.user_password) < PASSWORD_MIN: raise Exception(error)
+  if len(request.forms.user_password) > PASSWORD_MAX: raise Exception(error)
   return request.forms.get.user_password
 
 ##############################
