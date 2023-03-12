@@ -9,7 +9,7 @@ def _():
         user_email = x.validate_email()
         db = x.db()
         user = db.execute("SELECT * FROM users WHERE user_email = ? LIMIT 1", (user_email,)).fetchone()
-        if not user: raise Exception("Wrong Email")
+        if not user: raise Exception("cannot login")
         try:
             import production
             is_cookie_https = True

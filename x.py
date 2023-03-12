@@ -47,6 +47,7 @@ def validate_email():
   if not re.match(EMAIL_REGEX, request.forms.user_email):raise Exception(error)
   return request.forms.user_email
 
+
 ##############################
 
 ##############################
