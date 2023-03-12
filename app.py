@@ -104,6 +104,10 @@ def _():
 def _():
     return static_file("validate.js", root="./js")
 
+@get("/js/app.js")
+def _():
+    return static_file("app.js", root="./js")
+
 @get("/avatars/<filename:re:.*\.jpg>")
 def _(filename):
     return static_file(filename, root="./avatars")
