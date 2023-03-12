@@ -42,9 +42,9 @@ EMAIL_REGEX = "^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@(
 def validate_email():
   error = f"email must be between {EMAIL_MIN} and {EMAIL_MAX} characters, and must include @"
   request.forms.user_email = request.forms.user_email.strip()
-  if len(request.forms.user_email) < EMAIL_MIN: raise Exception(400, error)
-  if len(request.forms.user_email) > EMAIL_MAX: raise Exception(400, error)
-  if not re.match(EMAIL_REGEX, request.forms.user_email):raise Exception(400, error)
+  if len(request.forms.user_email) < EMAIL_MIN: raise Exception(error)
+  if len(request.forms.user_email) > EMAIL_MAX: raise Exception(error)
+  if not re.match(EMAIL_REGEX, request.forms.user_email):raise Exception(error)
   return request.forms.user_email
 
 ##############################

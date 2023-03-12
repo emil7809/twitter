@@ -9,7 +9,7 @@ def _():
         user_email = x.validate_email()
         db = x.db()
         user = db.execute("SELECT * FROM users WHERE user_email = ? LIMIT 1", (user_email,)).fetchone()
-        if not user: raise Exception(400, "Can't login")
+        if not user: raise Exception("Wrong Email")
         try:
             import production
             is_cookie_https = True
@@ -19,5 +19,7 @@ def _():
         return {"info":"success login", "user_name":user["user_name"]}
     except Exception as ex:
         print(ex)
+        response.status = 400
+        return {"info":str(ex)}
     finally:
         if "db" in locals(): db.close()
