@@ -15,3 +15,6 @@ followers in to smaller number
 
 MY TWEETS
 make better front end validation 
+
+LOGIN
+get front end validation to work
