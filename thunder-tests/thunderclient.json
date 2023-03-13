@@ -1,0 +1,33 @@
+[
+  {
+    "_id": "5e139dce-a4f6-48fe-a35d-c0565606de00",
+    "colId": "84883f50-5638-4e0b-84c5-3e0aee7db731",
+    "containerId": "",
+    "name": "api sign up",
+    "url": "127.0.0.1/api-sign-up",
+    "method": "POST",
+    "sortNum": 10000,
+    "created": "2023-03-13T08:00:40.611Z",
+    "modified": "2023-03-13T09:34:09.247Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "user_username",
+        "value": "elo",
+        "isDisabled": true,
+        "isPath": false
+      }
+    ],
+    "body": {
+      "type": "formdata",
+      "raw": "",
+      "form": [
+        {
+          "name": "user_username",
+          "value": "ååå"
+        }
+      ]
+    },
+    "tests": []
+  }
+]

@@ -1,5 +1,6 @@
 # https://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@github.com/emil7809/twitter.git
-#lålå
+# xvffngueczmspegn
+
 
 from bottle import default_app, get, run, template, static_file, post, response, request
 import x
@@ -9,6 +10,7 @@ import git
 import bridge_login
 import api.api_tweet
 import api.api_login
+import api.api_sign_up
 
 
 

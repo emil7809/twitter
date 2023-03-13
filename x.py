@@ -72,5 +72,22 @@ def validate_user_logged():
 
 ##############################
 
+##############################
 
+USER_USERNAME_MIN = 4
+USER_USERNAME_MAX = 15
+USER_USERNAME_REGEX = "^[a-zA-Z0-9_]*$"
+
+def validate_user_username():
+  #print(request.forms.user_username("\U00000394"))
+  print(request.forms.user_username)
+  print("*"*30)
+  error = f"user_username must be between {USER_USERNAME_MIN} and {USER_USERNAME_MAX} english characters"
+  request.forms.user_username = request.forms.user_username.strip()
+  if len(request.forms.user_username) < USER_USERNAME_MIN: raise Exception(error)
+  if len(request.forms.user_username) > USER_USERNAME_MAX: raise Exception(error)
+  if not re.match(USER_USERNAME_REGEX, request.forms.user_username):raise Exception(error)
+  return request.forms.user_username
+
+##############################
  
