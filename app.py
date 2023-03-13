@@ -1,4 +1,4 @@
-# https://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@github.com/emil7809/twitter.git
+# https://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@github.com/emil7809/twitter.git
 # xvffngueczmspegn
 
 
@@ -21,9 +21,9 @@ trends = [
 
 @post('/secret_url_for_git_hook')
 def git_update():
-  repo = git.Repo('./twitter')
+  repo = git.Repo('./mysite')
   origin = repo.remotes.origin
-  repo.create_head('Master', origin.refs.main).set_tracking_branch(origin.refs.main).checkout()
+  repo.create_head('master', origin.refs.main).set_tracking_branch(origin.refs.main).checkout()
   origin.pull()
   return ""
 
