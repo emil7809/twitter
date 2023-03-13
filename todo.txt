@@ -3,7 +3,6 @@ This has to work/deploy on AWS.
 
 TWEEET
 tweet timestamp
-fix tweet img
 fix tweet avatar in to cirkle
 tweet sum up big numbers
 
@@ -13,3 +12,9 @@ include if verified
 if following or follow
 joined at in to a date
 followers in to smaller number
+
+MY TWEETS
+make better front end validation 
+
+LOGIN
+get front end validation to work

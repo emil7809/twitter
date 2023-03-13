@@ -1,12 +1,23 @@
-<section id="tweets">
-    % for tweet in users_and_tweets:
-    <div class="tweet">
+
+    async function tweet() {
+        const frm = event.target;
+        const conn = await fetch("/", {
+            method: "POST",
+            body: new FormData(frm)
+        })
+
+        const data = await conn.json();
+        console.log(data);
+        const message = frm.querySelector("input[name='message']").value;
+        /*  console.log(message); */
+        document.querySelector("#my_tweets").insertAdjacentHTML("afterbegin",
+            `<div class="tweet">
         <div>
-            <img class="avatar" src="../avatars/{{tweet['user_avatar']}}" alt="avatar">
+            <img class="avatar" src="../avatars/cdd0a0a3be06427f84111a767e9729f9.jpg" alt="avatar">
         </div>
         <div class="right">
             <div class="top">
-                <b>{{tweet["user_name"]}} {{tweet["user_last_name"]}}</b>
+                <b>Emily Hoolahan</b>
                 <svg viewBox="0 0 24 24" aria-label="Verified account" role="img" class="check"
                     data-testid="icon-verified">
                     <g>
@@ -16,9 +27,9 @@
                     </g>
                 </svg>
                 <div class="info">
-                    <p>@{{tweet["user_username"]}}</p>
+                    <p>@emilyhoolahan</p>
                     <p>•</p>
-                    <p>{{tweet["tweet_created_at"]}}</p>
+                    <p>${data.tweet_created_at}</p>
                 </div>
                 <div class="dots"><svg viewBox="0 0 24 24" aria-hidden="true">
                         <g>
@@ -29,10 +40,10 @@
                     </svg></div>
             </div>
             <div class="tweet_content">
-                <p class="message">{{tweet["tweet_message"]}}</p>
-                % if tweet.get("tweet_image"):
-                <img src='/tweet_images/{{tweet["tweet_image"]}}'>
-                % end
+                <p class="message">${message}</p>
+               
+                
+              
 
 
             </div>
@@ -45,7 +56,7 @@
                             </path>
                         </g>
                     </svg>
-                    <p>{{tweet["tweet_total_replies"]}}</p>
+                    <p>${data.tweet_total_replies}</p>
                 </div>
                 <div class="flex">
                     <svg viewBox="0 0 24 24" aria-hidden="true" class="icon">
@@ -55,7 +66,7 @@
                             </path>
                         </g>
                     </svg>
-                    <p>{{tweet["tweet_total_retweets"]}}</p>
+                    <p>${data.tweet_total_retweets}</p>
                 </div>
                 <div class="flex">
                     <svg viewBox="0 0 24 24" aria-hidden="true" class="icon">
@@ -65,7 +76,7 @@
                             </path>
                         </g>
                     </svg>
-                    <p>{{tweet["tweet_total_likes"]}}</p>
+                    <p>${data.tweet_total_likes}</p>
                 </div>
                 <div class="flex hidden_on_phone">
                     <svg viewBox="0 0 24 24" aria-hidden="true" class="icon">
@@ -74,7 +85,7 @@
                             </path>
                         </g>
                     </svg>
-                    <p>{{tweet["tweet_total_views"]}}</p>
+                    <p>${data.tweet_total_views}</p>
                 </div>
                 <svg viewBox="0 0 24 24" aria-hidden="true" class="icon hidden_on_phone">
                     <g>
@@ -93,6 +104,29 @@
                 </div>
             </div>
         </div>
-    </div>
-    % end
-</section>
+    </div>`
+        );
+
+    }
+
+    async function login() {
+        const btn = event.target
+        btn.disabled = true
+        btn.innerText = btn.getAttribute("data-await")
+
+        const frm = event.target.form
+        const conn = await fetch("/api-login", {
+            method: "POST",
+            body: new FormData(frm)
+        })
+
+        btn.disabled = false
+        btn.innerText = btn.getAttribute("data-default")
+        if (!conn.ok){
+            console.log("cannot login")
+            return
+        }
+        const data = await conn.json();
+        console.log(data);
+        location.href = "/"
+    }
