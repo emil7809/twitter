@@ -2,8 +2,12 @@
 # xvffngueczmspegn
 
 
-from bottle import default_app, get, run, template, static_file, post, response, request
+from bottle import default_app, get, post, run, template, static_file, post, response, request
+import os
+import magic
+import uuid
 import x
+import mimetypes
 import sqlite3
 import pathlib
 import git
@@ -11,6 +15,40 @@ import bridge_login
 import api.api_tweet
 import api.api_login
 import api.api_sign_up
+
+@post("/upload-picture")
+def _():
+    try:
+       the_picture = request.files.get("picture")
+       name, ext = os.path.splitext(the_picture.filename)
+       #print("*"*30)
+       #print(name) #planning
+       #print(ext) # .png
+       #print("*"*30)
+       if ext not in (".png", ".jpg", ".jpeg"):
+           response.status = 400
+           return "picture not allowed"
+       picture_name = str(uuid.uuid4().hex) # 4565
+       picture_name = picture_name + ext # 4565.png
+       
+       the_picture.save(f"pictures/{picture_name}")
+       
+       mime = mimetypes.guess_type(f"pictures/{picture_name}", strict=True)
+       print(mime)
+       if mime == "'image/png', None":
+           url = os.getcwd()+f"pictures/{picture_name}"
+           os.remove(url, dir_fd = None)
+           response.status = 400
+           print(mime)
+           return "funny guy, I got u"
+       
+       
+
+       return "picture uploaded"
+    except Exception as ex:
+        print(ex)
+    finally:
+        pass
 
 
 
